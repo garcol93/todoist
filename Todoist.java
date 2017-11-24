@@ -1,4 +1,4 @@
-
+import java.util.ArrayList;
 /**
  * Write a description of class todoist here.
  * 
@@ -8,52 +8,59 @@
 public class Todoist
 {
     // instance variables - replace the example below with your own
-    private String tarea0;
-    private String tarea1;
-    private String tarea2;
+    private ArrayList<String> tareas;
 
     /**
      * Constructor for objects of class todoist
      */
     public Todoist()
     {
-        tarea0 = null;
-        tarea1 = null;
-        tarea2 = null;
+        tareas = new ArrayList<String>();
     }
 
     /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
+     * añade tareas nuevas al final del Array
      */
-    public void addTarea(String nombreTarea, int posicion)
+    public void addTarea(String nombreTarea)
     {   
-        if(posicion == 0){
-            tarea0 = nombreTarea;
-        }
-        else if (posicion == 1){
-            tarea1 = nombreTarea;
-        }
-        else if (posicion == 2){
-            tarea2 = nombreTarea;
-        }
+        tareas.add(nombreTarea);
     }
 
-    public void mostrarTareas(){
-        System.out.println("Tareas existentes");
-        if(tarea0 !=null){
-            System.out.println(tarea0);
-        }
-
-        if(tarea1 !=null){
-            System.out.println(tarea1);
-        }
-        
-        if(tarea2 !=null){
-            System.out.println(tarea2);
-        }
+    /**
+     * muestra todas las tareas en una linea
+     */
+    public void mostrarTareas()
+    {
+        System.out.println("Tareas existentes:");
+        System.out.println(tareas);
     }
 
+    /**
+     * devuelve el numero de tareas
+     */
+    public int getNumeroTareasPendientes()
+    {
+        return tareas.size();
+    }
+
+    public void mostrarNumeroTareasPendientes()
+    {
+        System.out.println("Numero tareas pendientes " + tareas.size());
+    }
+
+    /** 
+     * Elimina la tarea que ocupa la posicion indicada como
+     * parametro (empezando en 0). Devuelve true si elimina una
+     * tarea, false en caso contrario
+     */
+    public boolean eliminarTarea(int posicionTarea)
+    {
+        boolean valorADevolver = false;
+        if(posicionTarea >= 0 && posicionTarea < tareas.size())
+        {
+            tareas.remove(posicionTarea);
+            valorADevolver = true;
+        }       
+        return valorADevolver;
+    }
 }
