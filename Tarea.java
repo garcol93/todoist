@@ -1,30 +1,85 @@
 
 /**
- * Write a description of class tarea here.
+ * Crea un objeto que almacena una tarea y su estado (completada o no).
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author 1ºDAM 2017/2018
+ * @version 10/11/2018
  */
-public class Tarea
+public class Tarea 
 {
-    // instance variables - replace the example below with your own
     private String descripcion;
-    private boolean tareaCompletada;
+    // El estado de la tarea: True: Completada; False: No Completada. 
+    private boolean estado;
+    private int prioridad;
 
     /**
-     * Constructor for objects of class tarea
+     * Constructor de la clase Tarea.
+     * @param descripcion La descripción de la tarea
+     * Sergio
      */
-    public Tarea(String tarea)
+    public Tarea(String descripcion)
     {
-        descripcion= tarea;
-        tareaCompletada = false;
+        this.descripcion = descripcion;
+        estado = false;
+        prioridad = 1;
     }
+
+    /**
+     * Devuelve si el estado es true o false.
+     */
+    public boolean getEstado()
+    {
+        return estado;  
+    }
+
+    public int getPrioridad()
+    {
+        return prioridad;
+    }
+
+    /**
+     * Devuelve la descripción de la tarea.
+     */
+    public String getDescripcion()
+    {
+        return descripcion;
+    }
+
+    /**
+     * Devuelve toda la informacion de la tarea en formato String
+     */
+    public String getDatosTarea()
+    {
+        String aDevolver = descripcion;
+        if (estado) {
+            aDevolver = "[X]" + aDevolver + " prioridad: " + prioridad;;
+        }
+        else {
+            aDevolver = "[ ]" + aDevolver + " prioridad: " + prioridad;
+        }
+        return aDevolver; 
+    }
+
     
     /**
-     * devuelve el estado de la tarea
+     * Metodos setter
+     * Javier y Jorge
      */
-    public boolean getTareaCompletada()
-    {
-        return tareaCompletada;
+    public void tareaCompletada() {
+        estado = true;
+    }
+
+    public void cambiaPrioridad(int nuevaPrioridad){
+        if (nuevaPrioridad<1){
+            prioridad = 1;
+        }
+        else if(nuevaPrioridad>5){
+            prioridad = 5;
+        }
+        else {
+            prioridad = nuevaPrioridad;
+        }
     }
 }
+
+ 
